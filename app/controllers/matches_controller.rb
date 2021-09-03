@@ -18,6 +18,9 @@ class MatchesController < ApplicationController
 
      head :no_content
 
+  rescue ActiveREcord::RecordNotDestroyed
+
+     render json: {}, status: :unprocessable_entity
     
   end
 
