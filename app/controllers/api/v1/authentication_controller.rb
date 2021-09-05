@@ -5,7 +5,8 @@ module Api
       rescue_from ActionController::ParameterMissing, with: :parameter_missing
 
       def create
-        params.require(:username)
+        user = User.find_by(name: params.require(:username))
+
         params.require(:password)
         render json: { token: '123'}, status: :created
       end
