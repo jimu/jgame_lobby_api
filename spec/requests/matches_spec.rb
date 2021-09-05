@@ -3,10 +3,14 @@ require 'rails_helper'
 describe 'Matches API', type: :request do
 
   describe 'GET /matches' do
-    it 'returns all matches' do
-
+    before do
       FactoryBot.create(:match, title: 'Match 001')
       FactoryBot.create(:match, title: 'Match 002')
+    end
+
+
+    it 'returns all matches' do
+
       get '/matches'
       
       expect(response).to have_http_status(:success)

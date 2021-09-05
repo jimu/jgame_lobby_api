@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :matches, only: [:index, :create, :destroy]
+  resources :users, only: [:index, :create, :destroy]
+  resources :addresses, only: [:index, :show, :create, :destroy]
+
+  namespace :api do
+    namespace :v1 do
+      post 'authenticate', to: 'authentication#create'
+    end
+  end
 end

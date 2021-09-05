@@ -1,5 +1,10 @@
 class MatchesController < ApplicationController
+
   def index
+    render json: MatchesRepresenter.new(Match.all).as_json
+  end
+
+  def index_old
     render json: Match.all
   end
 
@@ -18,7 +23,7 @@ class MatchesController < ApplicationController
 
      head :no_content
 
-  rescue ActiveREcord::RecordNotDestroyed
+  rescue ActiveRecord::RecordNotDestroyed
 
      render json: {}, status: :unprocessable_entity
     
